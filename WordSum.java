@@ -11,6 +11,6 @@ public class WordSum {
 
         int sum = list.stream().mapToInt(m -> m.charAt(0)).sum();
 
-        System.out.println("Sum of first index is " + sum);
+        System.out.println("Sum of first indexes in a list " + sum);
     }
 }
