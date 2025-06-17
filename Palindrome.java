@@ -1,6 +1,7 @@
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Palindrome {
 
@@ -10,13 +11,16 @@ public class Palindrome {
 
         String lowerCaseStr = str.toLowerCase();
 
-        List<String> strList = Arrays.asList(lowerCaseStr);
+       List<String> strList = List.of(lowerCaseStr);
+//
+//        //Java 8
 
-        //Java 8
+        String reverse = IntStream.iterate(lowerCaseStr.length() - 1, i -> i >= 0, i -> i - 1).mapToObj(m -> Character.toString(lowerCaseStr.charAt(m)))
+                .collect(Collectors.joining());
 
-        List<String> reverselist = strList.stream().sorted(Comparator.reverseOrder()).toList();
+        System.out.println(reverse);
 
-        if(strList.equals(reverselist))
+        if(lowerCaseStr.equals(reverse))
             System.out.println("The given string is Palindrome");
         else
             System.out.println("The given string is NOT Palindrome");
